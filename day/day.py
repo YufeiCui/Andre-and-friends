@@ -1,7 +1,8 @@
+from activities.activities import Length
+
+
 class Day(object):
-    HOURS = 24
-    MINUTES = 60
-    SECONDS = 60
+    DAY = Length(24, 60)
 
 
 class ImproperTimeException(Exception, Day):
@@ -10,6 +11,6 @@ class ImproperTimeException(Exception, Day):
     """
     def __init__(self, msg=None):
         if msg is None:
-            msg = "There {} hours in a day, {} minutes in an hour, and {} seconds in a minute"\
-                .format(self.HOURS, self.MINUTES, self.SECONDS)
+            msg = "There {} hours in a day and {} minutes in an hour"\
+                .format(self.DAY.hour, self.DAY.minute)
         super(ImproperTimeException, self).__init__(msg)

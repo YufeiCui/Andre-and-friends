@@ -2,7 +2,7 @@ from day.day import *
 
 
 class Schedule(object):
-    HOURS = Day.HOURS
+    HOURS = Day.DAY.hour
 
     def __init__(self, start=9, work=8) -> None:
 

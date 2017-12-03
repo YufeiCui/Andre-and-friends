@@ -1,9 +1,36 @@
 from enum import Enum
 
 
+class Length(object):
+
+    def __init__(self, hour: int, minute: float=0):
+        self._hour = hour
+        self._minute = minute
+
+    @property
+    def hour(self):
+        return self._hour
+
+    @hour.setter
+    def hour(self, hour):
+        self.hour = hour
+
+    @property
+    def minute(self):
+        return self._minute
+
+    @minute.setter
+    def minute(self, minute):
+        self.minute = minute
+
+
 class Activity(object):
 
-    def __init__(self, title: str, length: float, fun: bool):
+    HALFHOUR = Length(0, minute=0.5)
+    HOUR = Length(1)
+    HOURANDHALF = Length(1, minute=0.5)
+
+    def __init__(self, title: str, length: 'Length'=HOUR, fun: bool = True):
         self._title = title
         self._length = length
         self._fun = fun
@@ -35,37 +62,37 @@ class Activity(object):
 
 class Computer(Activity):
 
-    def __init__(self, title="Computer Time", length=0.5):
+    def __init__(self, title="Computer Time", length=Activity.HALFHOUR):
         Activity.__init__(self, title, length, False)
 
 
 class DS(Activity):
 
-    def __init__(self, title="Playing the DS", length=0.5):
+    def __init__(self, title="Playing the DS", length=Activity.HALFHOUR):
         Activity.__init__(self, title, length, False)
 
 
 class TV(Activity):
 
-    def __init__(self, title="Watching TV", length=0.5):
+    def __init__(self, title="Watching TV", length=Activity.HALFHOUR):
         Activity.__init__(self, title, length, False)
 
 
 class Lecture(Activity):
 
-    def __init__(self, title="Watch Lecture", length=1):
+    def __init__(self, title="Watch Lecture", length=Activity.HOUR):
         Activity.__init__(self, title, length, False)
 
 
 class Homework(Activity):
 
-    def __init__(self, title="Do Work Report", length=1):
+    def __init__(self, title="Do Work Report", length=Activity.HOUR):
         Activity.__init__(self, title, length, False)
 
 
 class Read(Activity):
 
-    def __init__(self, title="Read Kindle", length=1):
+    def __init__(self, title="Read Kindle", length=Activity.HOUR):
         Activity.__init__(self, title, length, False)
 
 
